@@ -1,0 +1,48 @@
+tabel :
+
+- pegawai
+	idUser
+	namaUser
+	alamat
+	kualifikasi
+	email
+	telepon/HP
+	pendidikan terakhir
+	dokumen 
+	keahlian
+
+-perusahaan
+	idPerusahaan
+	Nama Pekerjaan
+	Deskripsi Pekerjaan
+	
+-lowongan
+	idLowongan
+	idPerusahaan
+	Kualifikasi yang diperlukan(sma/kuliah)
+	jenis lowongan(tetap/kontrak/freelance)
+	status(buka/tutup)
+	waktu tutup
+	klasifikasi lowongan(teknik/komputer)
+
+-lamaran
+	idlowongan
+	iduser
+	CV	
+	lamaran
+	status(masuk/diterima/tutup)
+
+- user 
+	idUser
+	username
+	password
+	status
+
+- komentar
+	idLowongan
+	idUser
+	komentar
+	tgl-jam
+	
+
+- wilayah : provinsi dan kabupaten

@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="Source/jquery/jquery-ui.css" rel="stylesheet">
+<title>Untitled Document</title>
+
+</head>
+
+<body>
+
+<div id="tabs" style="margin: 0 10% 0 10%;">
+	<ul>
+		<li><a href="#tabs-1">PENCARI</a></li>
+		<li><a href="#tabs-2">PERUSAHAAN</a></li>
+	</ul>
+	<div id="tabs-1" >
+                <pre>
+                <form action="" method="post" >
+                	<table  border="0">
+                    	<tr>
+                        	<td>Nama</td>
+                            <td>:</td>
+                            <td><input type="text" name="nama"></td>
+                        </tr>
+                        <tr>
+                        	<td>Jenis Kelamin</td>
+                            <td>:</td>
+                            <td><input name="jekel" type="radio" value="1" checked /> Pria     <input name="jekel" type="radio" value="2" />Wanita </td>
+                        </tr>
+                        <tr style="vertical-align:top;">
+                        	<td>Alamat</td>
+                            <td>:</td>
+                            <td><textarea name="alamat" rows="4" cols="40"></textarea></td>
+                        </tr>
+                        <tr>
+                        	<td>Agama</td>
+                            <td>:</td>
+                            <td><select name="agama" >
+                                	<option value="1">ISLAM</option>
+                                    <option value="2">KRISTEN</option>
+                                    <option value="3">KATOLIK</option>
+                                    <option value="4">HINDU</option>
+                                    <option value="5">BUDHA</option>
+                                    <option value="6">KONGHUCHU</option>
+                            	</select></td>
+                        </tr>
+                        <tr>
+                        	<td>Email</td>
+                            <td>:</td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                        	<td>Telepon</td>
+                            <td>:</td>
+                            <td><input type="text" name="telepon"></td>
+                        </tr>
+                        <tr>
+                        	<td>Pendidikan Terakhir</td>
+                            <td>:</td>
+                            <td><select name="edu">
+                                	<option value="1">SD</option>
+                                    <option value="2">SMP</option>
+                                    <option value="3">SMA</option>
+                                    <option value="4">D3</option>
+                                    <option value="5">S1</option>
+                                    <option value="6">S2</option>
+                                    <option value="7">S3</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                        	<td>Keahlian</td>
+                            <td>:</td>
+                            <td><input type="text" name="keahlian"> *) pisahkan dengan tanda koma</td>
+                        </tr>
+                        <tr>
+                        	<td>Kewarganegaraan</td>
+                            <td>:</td>
+                            <td><select name="wn">
+                                	<option value="1">WNI</option>
+                                    <option value="2">WNA</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                        	<td>Foto</td>
+                            <td>:</td>
+                            <td><input type="file" name="foto"></td>
+                        </tr>
+                        <tr>
+                        	<td colspan="3" align="center" style="padding-top:30px;"><input type="submit" name="kirim" value="DAFTAR"> <input type="reset" name="reset" value="BATAL" /> </td>
+                        </tr>
+                     </table>
+                </form>
+                </pre>
+    </div>
+    <div id="tabs-2">
+    <pre>
+                <form action="" method="post" >
+                	<table  border="0">
+                    	<tr>
+                        	<td>Nama Perusahaan</td>
+                            <td>:</td>
+                            <td><input type="text" name="nama"></td>
+                        </tr>
+                        <tr style="vertical-align:top;">
+                        	<td>Alamat</td>
+                            <td>:</td>
+                            <td><textarea name="alamat" rows="4" cols="40"></textarea></td>
+                        </tr>
+                        <tr>
+                        	<td>Deskripsi</td>
+                            <td>:</td>
+                            <td><textarea name="deskripsi" rows="4" cols="40"></textarea></td>
+                        </tr>
+                        <tr>
+                        	<td>Telepon</td>
+                            <td>:</td>
+                            <td><input type="text" name="telepon"></td>
+                        </tr>
+                        <tr>
+                        	<td>Email</td>
+                            <td>:</td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                        	<td>Keahlian</td>
+                            <td>:</td>
+                            <td><input type="text" name="keahlian"></td>
+                        </tr>
+                        <tr>
+                        	<td>Kewarganegaraan</td>
+                            <td>:</td>
+                            <td><select name="wn">
+                                	<option value="1">WNI</option>
+                                    <option value="2">WNA</option>
+                                </select></td>
+                        </tr>
+                        
+                        <tr>
+                        	<td colspan="3" align="center" style="padding-top:30px;"><input type="submit" name="kirim" value="DAFTAR"> <input type="reset" name="reset" value="BATAL" /> </td>
+                        </tr>
+                     </table>
+                </form>
+                </pre>
+          </div>
+<script src="Source/jquery/external/jquery/jquery.js"></script>
+<script src="Source/jquery/jquery-ui.js"></script>
+<script>
+$( "#tabs" ).tabs();
+</script>
+</body>
+</html>

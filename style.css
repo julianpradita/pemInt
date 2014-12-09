@@ -1,0 +1,212 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin:0;
+	padding:0;}
+
+.main{
+	width:auto;
+	height:auto;
+}
+
+.main-header{
+	border-color:#3974FD;
+	border-bottom: 10px solid #3974FD;
+	width:auto;
+	height:135px;
+	/*padding:0 10% 0 10%;*/
+	/*background:  url(Image/PI%20WEB%20JOBHOUSE.png) repeat-x bottom #7D85F7;*/
+	background-color : #7D85F7;
+	margin:0;
+	padding-top : 10px;	
+	}
+	
+.main-header-title{
+	width:70%;
+	height:auto;
+	float:left;
+	margin-left:10%
+	/*background-color:#9F0;*/
+
+	}
+
+.main-header-login{
+	width:10%;
+	height:auto;
+	float:left;
+	/*background-color:#F06;*/
+	text-align:right;
+	padding:8px 20px 0 0;
+	}
+	
+.main-center{
+	width:auto;
+	height:auto;
+	/*background-color:#FF0;
+	border : solid 3px ;
+	border-radius: 12px ;
+	box-shadow: 0px 0px 14px #888888;
+	*/
+	margin: 0 30px 0 1%;
+	}
+
+.main-menu{
+	height: 80px;
+	width: auto;
+/*	background:  url(Image/menu-back.png) repeat-x bottom;*/
+	background-color:#488E61;
+	padding:1% 10% 1% 10%;
+	}
+
+.main-company{
+	width : auto;
+	height : auto;
+	padding : 1% 10% 1% 12%;
+	background-color : #C2C2A3;
+	font-family : calibri;
+	font-size : 30px;
+	}
+
+.main-company #row{
+	padding : 1% 0 1% 0;
+	width : 100%;
+	height : auto;
+	border-bottom:#666 2px solid;
+	}
+	
+.main-company img{
+	width : 100px;
+	height: auto;
+	}
+	
+.main-footer{
+	height:auto;
+	padding: 0% 10% 5% 10%;
+	border-top:#626262 solid 10px;
+	background-color:#282828;
+	color:#FFF;
+	font-size:18px;
+	}
+.main-center #lowongan{
+	height : 150px;
+	margin-top : 2%;
+	}
+.main-center #lowongan #low-set{
+	float : left;
+	margin: 0 1% 0 1%;
+	}
+	
+.main-center #lowongan #low-set img{
+	width : 150px;
+	height: auto;
+	}
+.main-center #lowongan #low-set #desc{
+	position:relative;
+	bottom: 32px;
+	width: 150px;
+    height : 32px;
+    background-color: #ffffff;
+/*    border: 1px solid black;*/
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+	}
+
+.cari-kerja{
+	height: 160px;
+	width:100%;
+	background:#FF0;
+	border-bottom:#C90 10px solid;
+	padding : 1% 10% 2% 10%;
+	}
+
+
+#menu-atas {
+	position:absolute; 
+	top: 18%; 
+	left : 55%;
+	color: #FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:20px;
+	}
+#menu-atas ul {
+	list-style-type:none;
+	width: auto;
+	height:10px;
+	margin : 0;
+	padding: 0;
+	}
+
+#menu-atas ul li{
+	display:inline;
+	}
+a{
+	text-decoration:none;
+	}
+
+#menu-atas a:hover{
+	color:#9799FF;
+	}
+
+#login a{
+	text-decoration:none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color:#FFF;
+	font-size:16px;
+	}
+
+#img-float {
+	float:left;
+	width:60px;
+	height:auto;
+	margin:0 10% 0 8% ;
+	}
+
+#img-float img{
+	width:100%;
+	height:auto;
+	}
+
+#img-float #desc{
+	font-family:Cambria;
+	color:#FFF;
+	text-align:center;
+	margin : 3px 10px 2px 10px;
+	}
+	
+#menu-list {
+    position: relative;
+	margin: 0% 25% 0 25%;
+}
+
+#menu-list li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+}
+
+#menu-list li, #menu-list a {
+    height: 57px;
+    display: block;
+}
+
+#fb {
+    left: 0;
+    width: 60px;
+    background: url(Image/menu-list.png) 0 0;
+	
+}
+#tw {
+    left: 63px;
+    width: 53px;
+    background: url(Image/menu-list.png) -60px 0;
+	
+}
+
+#reg td{
+	vertical-align:top;
+	padding : 5px 0 5px 0;
+	text-align:left;
+	}
