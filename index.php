@@ -19,16 +19,37 @@
 <script>
 	$( "#tabs" ).tabs();
 </script>
-
+<script type="text/javascript">
+// Popup window code
+function newPopup(url) {
+	popupWindow = window.open(
+		url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+}
+</script>
+<?php include ('koneksi.php');?>
 </head>
 
 <body>
 <div class="main">
 	<div class="main-header">
     	<div class="main-header-title">
-        	<img src="Image/title.png" width="200px" height="auto" />
+        	<?php 
+			if(isset($_SESSION['iduser'])){
+				switch($_SESSION['iduser']){
+					case 'pencari' : 
+						echo "<a href='index.php?id=pencari'>";break;
+					case 'perusahaan' :
+						echo "<a href='index.php?id=perusahaan'>";break;
+				}
+			}
+			else{ 
+					echo "<a href='index.php'>";
+			?>
+            <img src="Image/title.png" width="200px" height="auto" />
+            <a>
         </div>
         <?php
+			}
 		if (isset($_GET['id'])){
 			$id = $_GET['id'];
 			}
@@ -37,8 +58,8 @@
 			}
 		if(!$id){?>
         <div class="main-header-login">
-        	<a href="#" id="login">REGISTER| </a> 
-            <a href="daftar.php" id="login">LOGIN</a>
+        	<a href="index.php?id=daftar" id="login">REGISTER| </a> 
+            <a href="index.php?id=login" id="login">LOGIN</a>
         </div>
         <?php
 			}
@@ -46,10 +67,9 @@
 			?>
             <div id="menu-atas">
         	<ul>
-            	<li><a href="#">HEADER</a></li> 
-                <li><a href="#">tst</a></li>
-                <li><a href="#">HEADER</a></li>
-                <li><a href="#">HEADER</a></li>
+            	<li><a href="index.php?id=pencari&sub=mine">MY ID</a></li> 
+                <li><a href="index.php?id=pencari&sub=hs">HISTORY</a></li>
+                <li><a href="index.php?id=pencari&sub=rs">RESUME</a></li>
             </ul>
         </div>
         <?php
@@ -62,33 +82,60 @@
 			case 'pencari' : 
 				include('pencari.php');
 				break;
-			case 'coompany' : break;
-			case 'daftar' : 
-				include ('daftar.php');break;
+			case 'company' : 
+				include('perusahaan.php');
+				break;
+			case 'guest' : 
+				if($_GET['cari']=='true'){
+					include('pencari.php');}
+				else{
+					}
+				break;
+			case 'login' : 
+				include('login.php');
+				break;
+			case 'profile' :
+				include('profile.php');
+				break;
+			case 'tips' :
+				include('tips.php');
+				break;
+			case 'ask' :
+				include('ask.php');
+				break;
+		    case 'daftar' : 
+				include ('daftar.php');
+				break;
 			default : 
 	?>
         <div style="width:100%; height: 100%">
                 <?php include ("image-slider.html"); ?>  	
         </div>
-        <div class="main-menu">
+        <div class="main-menu" align="center">
+	        <a href="index.php?id=guest&cari=true">
             <div id="img-float">
                 <img src="Image/profile.png" />
-                <div id="desc">user</div>
+                <div id="desc">FIND JOB</div>
             </div>
+            </a>
+            <a href="index.php?id=profile">
             <div id="img-float">
                 <img src="Image/config.png"/>
-                <div id="desc">user</div>
-            </div>   
+                <div id="desc">PROFILE</div>
+            </div> 
+            </a>
+            <a href="index.php?id=tips">  
             <div id="img-float">
                 <img src="Image/search.png" />
-                <div id="desc">user</div>
+                <div id="desc">TIPS</div>
             </div>
+            </a>
+            <a href="index.php?id=contact">
             <div id="img-float">
                 <img src="Image/ask2.png" />
-                <div id="desc">user</div>
-            </div>
-            
-            
+                <div id="desc">ASK US</div>
+            </div>  
+            </a>          
         </div>
         <div class="main-company">
             <div style="margin-bottom:2%;">
@@ -114,9 +161,8 @@
 		}
 	?>
     <div class="main-footer">
-    
     	<div align="center" id="menu-list">
-            <ul >
+            <ul>
                 <li id="fb"><a href="#"></a></li>
                 <li id="tw"><a href="#"></a></li>
             </ul>

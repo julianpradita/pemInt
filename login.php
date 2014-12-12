@@ -1,16 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>LOGIN</title>
-</head>
-
-<body>
 <?php
 	if(!isset($_POST['submit'])){
 ?>
-	<form>
+	<div align="center" id="login-page">
+	<form action="index.php?id=login" method="post">
 		<table>
+        	<tr>
+            	<td colspan="3" align="center"><h3>LOG IN</h3></td>
+            </tr>
         	<tr>
             	<td>Username</td>
                 <td> : </td>
@@ -27,26 +23,28 @@
                 <td><select name="opsi">
                 		<option value="1">Pelamar</option>
                         <option value="2">Perusahaan</option>
+                     </select>
                 </td>
             </tr>
             <tr>
-            	<td colspan="3" align="right"><input type="submit" name="submit" /><input type="reset" name="batal" />
+            	<td colspan="3" align="right"><input type="submit" name="submit" value="LOG IN" /> <input type="reset" name="batal" value="CANCEL" />
                 </td>
             </tr>
         </table>
 	</form>
+    </div>
 <?php
 	}
 	else{
 		if($_POST['opsi']=='1'){
-			$query = mysql_query("SELECT username,status,iduser from pencari where username = '".$_POST['usr']."' AND password = '".$_POST['pwd']."'");}
+			$query = mysql_query("SELECT username,iduser from pencari where username = '".$_POST['usr']."' AND password = '".$_POST['pwd']."'");}
 		else{
-			$query = mysql_query("SELECT username,status,iduser from perusahaan where username = '".$_POST['usr']."' AND password = '".$_POST['pwd']."'");}
+			$query = mysql_query("SELECT username,iduser from perusahaan where username = '".$_POST['usr']."' AND password = '".$_POST['pwd']."'");}
 			while($row = mysql_fetch_array($query)){
 				$status = $row['status'];
 				$username = $row['username'];
 				$iduser = $row['iduser'];}
-			if(mysql_num_rows($query)>0 and $status == 'approved'){
+			if(mysql_num_rows($query)>0 ){
 				$_SESSION['username'] = $username;
 				$_SESSION['iduser'] = $iduser;
 				if($_POST['opsi']==1){
@@ -57,8 +55,6 @@
 					}
 				}
 			else{
-				echo "<script>alert('Username atau Password salah');window.open('index.php?id=login');</script>";}
+				echo "<script>alert('Username atau Password salah');window.location='index.php?id=login';</script>";}
 	}
 ?>
-</body>
-</html>
