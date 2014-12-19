@@ -41,19 +41,20 @@
 		else{
 			$query = mysql_query("SELECT username,iduser from perusahaan where username = '".$_POST['usr']."' AND password = '".$_POST['pwd']."'");}
 			while($row = mysql_fetch_array($query)){
-				$status = $row['status'];
 				$username = $row['username'];
 				$iduser = $row['iduser'];}
 			if(mysql_num_rows($query)>0 ){
 				$_SESSION['username'] = $username;
 				$_SESSION['iduser'] = $iduser;
+				$_SESSION['tipe'] = $_POST['opsi'];
+			
 				if($_POST['opsi']==1){
-					echo "<script>alert('Terima Kasih telah login');window.open('index.php?id=pencari');</script>";
+						echo "<script>alert('Terima Kasih telah login');window.location='index.php?id=pencari';</script>";
 				}
 				else{
-					echo "<script>alert('Terima Kasih telah login');window.open('index.php?id=perusahaan');</script>";
-					}
+					echo "<script>alert('Terima Kasih telah login');window.location='index.php?id=perusahaan';</script>";
 				}
+					}
 			else{
 				echo "<script>alert('Username atau Password salah');window.location='index.php?id=login';</script>";}
 	}

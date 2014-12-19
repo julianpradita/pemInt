@@ -33,7 +33,7 @@ function rubah2(combobox)
 	</ul>
 	<div id="tabs-1" >
                 <pre>
-                <form action="" method="post" >
+                <form action="" method="post" enctype="multipart/form-data">
                 	<table  border="0">
                     	<tr>
                         	<td>Nama</td>
@@ -134,7 +134,7 @@ function rubah2(combobox)
     </div>
     <div id="tabs-2">
     <pre>
-                <form action="" method="post" >
+                <form action="" method="post" enctype="multipart/form-data">
                 	<table  border="0">
                     	<tr>
                         	<td>Nama Perusahaan</td>
@@ -147,9 +147,20 @@ function rubah2(combobox)
                             <td><textarea name="alamat" rows="4" cols="40"></textarea></td>
                         </tr>
                         <tr>
-                        	<td>Deskripsi</td>
+                        	<td>Provinsi</td>
                             <td>:</td>
-                            <td><textarea name="deskripsi" rows="4" cols="40"></textarea></td>
+                            <td><select name="provinsi" id="prov" onchange="javascript:rubah3(this)">
+                            	<option value="" selected>-- Pilih Povinsi --</option>
+                        	<?php
+                            	$query = mysql_query("SELECT * FROM provinsi ORDER BY provinsi_id");
+								while($row=mysql_fetch_array($query)){
+									echo "<option value=".$row['provinsi_id'].">".$row['provinsi_nama']."</option>";}
+                            ?>	</select></td>
+                        </tr>
+                        <tr>
+                        	<td>Bidang</td>
+                            <td>:</td>
+                            <td><textarea name="deskripsi" rows="2" cols="40"></textarea></td>
                         </tr>
                         <tr>
                         	<td>Telepon</td>

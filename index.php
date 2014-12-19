@@ -34,22 +34,22 @@ function newPopup(url) {
 	<div class="main-header">
     	<div class="main-header-title">
         	<?php 
-			if(isset($_SESSION['iduser'])){
-				switch($_SESSION['iduser']){
-					case 'pencari' : 
+			if(isset($_SESSION['tipe'])){
+				switch($_SESSION['tipe']){
+					case '1' : 
 						echo "<a href='index.php?id=pencari'>";break;
-					case 'perusahaan' :
+					case '2' :
 						echo "<a href='index.php?id=perusahaan'>";break;
 				}
 			}
 			else{ 
 					echo "<a href='index.php'>";
+			}
 			?>
             <img src="Image/title.png" width="200px" height="auto" />
             <a>
         </div>
         <?php
-			}
 		if (isset($_GET['id'])){
 			$id = $_GET['id'];
 			}
@@ -65,12 +65,17 @@ function newPopup(url) {
 			}
 		else if($id=='pencari'){
 			?>
-            <div id="menu-atas">
-        	<ul>
-            	<li><a href="index.php?id=pencari&sub=mine">MY ID</a></li> 
-                <li><a href="index.php?id=pencari&sub=hs">HISTORY</a></li>
-                <li><a href="index.php?id=pencari&sub=rs">RESUME</a></li>
-            </ul>
+            <div>
+                <div class="main-header-login" style="position:absolute; right:14%;width:20%;">
+                	Welcome,<font color="#FFCC00" size="+2"><?php echo $_SESSION['username']?></font> <a href="logout.php" id="login">LOGOUT</a>
+            </div>
+                <div id="menu-atas">
+                <ul>
+                    <li><a href="index.php?id=pencari&sub=mine">MY ID</a></li> 
+                    <li><a href="index.php?id=pencari&sub=hs">HISTORY</a></li>
+                    <li><a href="index.php?id=pencari&sub=rs">RESUME</a></li>
+                </ul>
+            </div>
         </div>
         <?php
         	}
@@ -104,7 +109,11 @@ function newPopup(url) {
 				include('ask.php');
 				break;
 		    case 'daftar' : 
-				include ('daftar.php');
+				if(!isset($_GET['set'])){
+					include('daftar.php');
+					}
+				else{require('set_username.php');
+					}
 				break;
 			default : 
 	?>
@@ -142,18 +151,14 @@ function newPopup(url) {
                 Featured Company
             </div>
             <div id="row">
-                <img src="Image/p1.jpg">
-                <img src="Image/p5.jpg">
-            </div>
-            <div id="row">
-                <img src="Image/p1.jpg">
-                <img src="Image/p5.jpg">
-                <img src="Image/p4.jpg" />
-                <img src="Image/p2.jpg" />
-            </div>
-            <div id="row">
-                <img src="Image/p1.jpg">
-                <img src="Image/p5.jpg">
+                <?php
+            $query = mysql_query("Select Nama,logo from perusahaan order by Nama");
+			$num = 0;
+			while($row = mysql_fetch_array($query)){
+				echo"<img src='Image/logo/".$row['logo']."' style='margin: 0 10px 0 10px'>";
+			}
+				
+			?>
             </div>
         </div>
     <?php
@@ -161,11 +166,28 @@ function newPopup(url) {
 		}
 	?>
     <div class="main-footer">
-    	<div align="center" id="menu-list">
-            <ul>
-                <li id="fb"><a href="#"></a></li>
-                <li id="tw"><a href="#"></a></li>
-            </ul>
+    	<div id="menu-list">
+        	<div>
+        	<div style="float:left;width: 30%;">
+            	<font color="#CCCCCC" size="+2">OFFICE</font> <br /><br />
+            	
+                PT. Semarang Jobs<br>
+                Jl Kenanga no. 45<br>
+                Semarang<br>
+                +6224 897583<br> 
+                
+            </div>
+            
+            <div style="float:left;width: 30%">
+                <ul>
+                    <li id="fb" style="margin-left:-6px"><a href="#" style="margin-left: 70px;padding-top: 27px">facebook.com/gudangloker</a></li>
+                    <li id="tw"><a href="#" style="margin-left: 70px;padding-top: 27px">@gudangloker</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div style="position:absolute; margin-top:150px; padding:0 30% 0 30%;color:#06C">
+        Klop Team &copy; 2014
         </div>
     </div>
 </div>
