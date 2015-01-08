@@ -1,8 +1,8 @@
 <?php
-$host = "127.0.0.1";
-$username = "root";
-$password = "";
+$host = "localhost";
+$username = "a7128970_job123";
+$password = "a7128970_job123";
 
-mysql_connect($host,$username,$password);
-mysql_select_db('job');
+mysql_connect('mysql7.000webhost.com','a7128970_job123','job123');
+mysql_select_db('a7128970_job');
 ?>
