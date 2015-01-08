@@ -33,7 +33,7 @@
 	$row = mysql_fetch_array($query);
 	
 ?>
-<body>
+<body style="margin:0;padding:0;background-color:#CCCCCC">
 <div class="main">
 	<div class="main-center" style="margin:0 13vw 0 13vw">
     	<div style="margin-top:10px;height:5vh;">

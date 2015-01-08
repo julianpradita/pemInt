@@ -67,7 +67,7 @@ function newPopup(url) {
 			?>
             <div>
                 <div class="main-header-login" style="position:absolute; right:14%;width:20%;">
-                	Welcome,<font color="#FFCC00" size="+2"><?php echo $_SESSION['username']?></font> <a href="logout.php" id="login">LOGOUT</a>
+                	Welcome,<font color="#FFCC00" size="+1"><?php echo $_SESSION['username']?></font>   <a href="logout.php" id="login">| LOGOUT</a>
             </div>
                 <div id="menu-atas">
                 <ul>
