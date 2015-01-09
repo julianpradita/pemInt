@@ -155,13 +155,7 @@ function newPopup(url) {
                 <img src="Image/search.png" />
                 <div id="desc">TIPS</div>
             </div>
-            </a>
-            <a href="index.php?id=contact">
-            <div id="img-float">
-                <img src="Image/ask2.png" />
-                <div id="desc">ASK US</div>
-            </div>  
-            </a>          
+            </a>        
         </div>
         <div class="main-company">
             <div style="margin-bottom:2%;">
