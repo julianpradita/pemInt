@@ -79,7 +79,24 @@ function newPopup(url) {
         </div>
         <?php
         	}
+		else if($id=='perusahaan'){
+			
 		?>
+     <div>
+                <div class="main-header-login" style="position:absolute; right:14%;width:20%;">
+                	Welcome,<font color="#FFCC00" size="+1"><?php echo $_SESSION['username']?></font>   <a href="logout.php" id="login">| LOGOUT</a>
+            </div>
+                <div id="menu-atas">
+                <ul>
+                    <li><a href="index.php?id=pencari&sub=mine">menu1</a></li> 
+                    <li><a href="index.php?id=pencari&sub=hs">menu2</a></li>
+                    <li><a href="index.php?id=pencari&sub=rs">menu3</a></li>
+                </ul>
+            </div>
+        </div>
+        <?php
+        }
+		?>   
     </div>
     <?php
 		
@@ -87,8 +104,8 @@ function newPopup(url) {
 			case 'pencari' : 
 				include('pencari.php');
 				break;
-			case 'company' : 
-				include('perusahaan.php');
+			case 'perusahaan' : 
+				include('company.php');
 				break;
 			case 'guest' : 
 				if($_GET['cari']=='true'){
@@ -127,7 +144,7 @@ function newPopup(url) {
                 <div id="desc">FIND JOB</div>
             </div>
             </a>
-            <a href="index.php?id=profile">
+            <a href="index.php?id=login">
             <div id="img-float">
                 <img src="Image/config.png"/>
                 <div id="desc">PROFILE</div>

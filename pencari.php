@@ -63,31 +63,32 @@
         	<?php
 				
 					if(isset($_POST['kirim'])){
-						if(!isset($_POST['lowongan'])){
-							$query = mysql_query("Select l.judul, pr.logo,l.idLowongan from lowongan l, perusahaan pr where l.idperusahaan = pr.iduser order by l.tanggal");
-							}
-						else{$query = mysql_query("Select l.judul, pr.logo from lowongan l, perusahaan pr where l.idperusahaan = pr.idperusahaan and (l.judul like '%".$_POST['lowongan']."%' or l.deskripsi like '%".$_POST['lowongan']."%') and pr.provinsi ='".$_POST['provinsi']."' order by l.tanggal");
-						}
+							$query = mysql_query("Select l.judul, pr.logo from lowongan l, perusahaan pr where l.idperusahaan = pr.iduser and (l.judul like '%".$_POST['lowongan']."%' or l.deskripsi like '%".$_POST['lowongan']."%') and pr.provinsi ='".$_POST['provinsi']."' order by l.tanggal");
 						$i=0;
-						while($row = mysql_fetch_array($query)){
-							if($i==0){
-								echo "<div id='lowongan'>";
-								}
-								echo "
-									<a href='lowongan.php?low=".$row['idLowongan']."'>
-										<div id='low-set'>
-											<img src='Image/profpic/test.jpg' />
-											<div id='desc'>
-												".$row['judul']."
+					
+						if(mysql_num_rows($query)<1){
+								echo "<script>alert('Tidak Ada Lowongan tersedia');window.location='index.php?id=pencari'</script>";break;}
+						else{
+							while($row = mysql_fetch_array($query)){
+									if($i==0){
+									echo "<div id='lowongan'>";
+									}
+									echo "
+										<a href='lowongan.php?low=".$row['idLowongan']."'>
+											<div id='low-set'>
+												<img src='Image/profpic/test.jpg' />
+												<div id='desc'>
+													".$row['judul']."
+												</div>
 											</div>
-										</div>
-									</a>" ;
-							if($i==0){
-								echo "</div>";
-								$i=0;
+										</a>" ;
+								if($i==0){
+									echo "</div>";
+									$i=0;
+								}
+								$i++;
 							}
-							$i++;
-						}
+						}	
 					}
 	}
 				else{

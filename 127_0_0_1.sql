@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2014 at 02:51 AM
+-- Generation Time: Jan 07, 2015 at 05:49 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -19,6 +19,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `job`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE IF NOT EXISTS `files` (
+  `iduser` char(5) NOT NULL,
+  `date` datetime NOT NULL,
+  `tipe` enum('CV','lamaran','zip') NOT NULL,
+  `file` text NOT NULL,
+  `status` enum('enabled','disabled') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`iduser`, `date`, `tipe`, `file`, `status`) VALUES
+('L-3', '2014-12-10 15:34:21', 'CV', 'test.doc', 'enabled'),
+('L-3', '2014-12-16 16:22:37', 'CV', 'Joker-wallpaper-9525338.jpg', 'disabled'),
+('L-3', '2014-12-16 16:29:01', 'CV', 'life-wallpaper-10172202.jpg', 'disabled'),
+('L-3', '2014-12-16 16:43:57', 'lamaran', 'Assassins_Creed_3-wallpaper-10047344.jpg', 'enabled'),
+('L-3', '2014-12-16 16:44:02', 'zip', 'My_Life_Story-wallpaper-10226917.jpg', 'disabled'),
+('L-3', '2014-12-16 17:03:01', 'zip', 'L-317-03-01My_Life_Story-wallpaper-10226917.jpg', 'disabled'),
+('L-3', '2014-12-16 17:03:35', 'zip', 'L-3misty_railway-wallpaper-10172183.jpg', 'disabled'),
+('L-3', '2014-12-16 17:09:10', 'zip', 'L-3170910Dont_Touch_My_Phone-wallpaper-10204255.jpg', 'disabled'),
+('L-3', '2014-12-18 15:22:21', 'zip', 'L-3152221Android_Lime-wallpaper-6859548.jpg', 'enabled');
 
 -- --------------------------------------------------------
 
@@ -554,6 +583,14 @@ CREATE TABLE IF NOT EXISTS `komentar` (
   `Komentar` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `komentar`
+--
+
+INSERT INTO `komentar` (`IdLowongan`, `IdUser`, `date`, `judul`, `Komentar`) VALUES
+('W-1', 'L-2', '2014-12-03 06:34:17', 'tanya', 'ini apa sih'),
+('W-1', 'L-3', '2014-12-13 17:39:42', 'tets', 'test');
+
 -- --------------------------------------------------------
 
 --
@@ -563,10 +600,21 @@ CREATE TABLE IF NOT EXISTS `komentar` (
 CREATE TABLE IF NOT EXISTS `lamaran` (
   `IdLowongan` char(5) NOT NULL,
   `IdUser` char(5) NOT NULL,
-  `CV` varchar(40) NOT NULL,
-  `Lamaran` varchar(40) NOT NULL,
+  `CV` text NOT NULL,
+  `Lamaran` text NOT NULL,
+  `zip` text NOT NULL,
+  `date` datetime NOT NULL,
   `Status` enum('Masuk','Terima','Tutup') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lamaran`
+--
+
+INSERT INTO `lamaran` (`IdLowongan`, `IdUser`, `CV`, `Lamaran`, `zip`, `date`, `Status`) VALUES
+('W-1', 'L-3', 'test.doc', 'Assassins_Creed_3-wallpaper-10047344.jpg', 'L-3170910Dont_Touch_My_Phone-wallpaper-10204255.jpg', '2014-12-16 17:42:19', 'Masuk'),
+('W-1', 'L-3', 'test.doc', 'Assassins_Creed_3-wallpaper-10047344.jpg', 'L-3152221Android_Lime-wallpaper-6859548.jpg', '2014-12-18 15:23:34', 'Masuk'),
+('W-1', 'L-3', 'test.doc', 'Assassins_Creed_3-wallpaper-10047344.jpg', '', '2014-12-18 15:26:17', 'Masuk');
 
 -- --------------------------------------------------------
 
@@ -591,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `lowongan` (
 --
 
 INSERT INTO `lowongan` (`IdLowongan`, `IdPerusahaan`, `Kualifikasi`, `JenisLowongan`, `Klasifikasi`, `Judul`, `Deskripsi`, `tanggal`, `Status`) VALUES
-('L-001', 'PR-01', 'ahdjfhajsdhgajsd', 'Tetap', 'jbjhsudsbcusc', 'lowongan', 'ini lowongan', '2014-12-09 00:00:00', 'Buka');
+('W-1', 'C-1', 'ahdjfhajsdhgajsd', 'Tetap', 'jbjhsudsbcusc', 'lowongan', 'ini lowongan', '2014-12-09 06:33:30', 'Buka');
 
 -- --------------------------------------------------------
 
@@ -607,7 +655,7 @@ CREATE TABLE IF NOT EXISTS `pencari` (
   `Jekel` enum('Pria','Wanita') NOT NULL,
   `tglLahir` date NOT NULL,
   `Alamat` text NOT NULL,
-  `kabupaten` tinyint(4) NOT NULL,
+  `kabupaten` int(4) NOT NULL,
   `provinsi` tinyint(4) NOT NULL,
   `Agama` enum('ISLAM','KRISTEN','KHATOLIK','HINDU','BUDHA','KONGHUCHU') NOT NULL,
   `Email` varchar(60) NOT NULL,
@@ -623,8 +671,10 @@ CREATE TABLE IF NOT EXISTS `pencari` (
 --
 
 INSERT INTO `pencari` (`IdUser`, `Username`, `Password`, `Nama`, `Jekel`, `tglLahir`, `Alamat`, `kabupaten`, `provinsi`, `Agama`, `Email`, `Telepon`, `Didik`, `keahlian`, `wargaNegara`, `Foto`) VALUES
-('L-001', '', '', 'julian', 'Pria', '0000-00-00', 'test', 0, 10, 'ISLAM', 'great_julian@yahoo.com', '0898764', '', 'test, test', 'WNI', 'none'),
-('L-2', '', '', 'julian', 'Pria', '0000-00-00', 'te', 1, 15, 'ISLAM', 'great_julian@yahoo.com', '0898764', '', '', 'WNI', 'none');
+('L-1', '', '', 'julian', 'Pria', '0000-00-00', 'test', 0, 10, 'ISLAM', 'great_julian@yahoo.com', '0898764', '', 'test, test', 'WNI', 'none'),
+('L-2', '', '', 'julian', 'Pria', '0000-00-00', 'te', 1, 15, 'ISLAM', 'great_julian@yahoo.com', '0898764', '', '', 'WNI', 'none'),
+('L-3', 'idnar', '123', 'tester', 'Pria', '2014-12-09', 'gsfdhafdhdghkjshdg', 1, 1, 'ISLAM', 'dgsd', '45637', 'D3', 'farmasi, apoteker', 'WNI', 'none'),
+('L-4', 'julian', '123', 'julian', 'Pria', '1991-07-27', 'petirrejo', 184, 14, 'ISLAM', 'julianmail07@gmail.com', '0899932821', 'D3', 'komputer, jaringan', 'WNI', 'My_Life_Story-wallpaper-10226917.jpg');
 
 -- --------------------------------------------------------
 
@@ -638,6 +688,7 @@ CREATE TABLE IF NOT EXISTS `perusahaan` (
   `Password` varchar(20) NOT NULL,
   `Nama` varchar(40) NOT NULL,
   `Alamat` text NOT NULL,
+  `provinsi` tinyint(4) NOT NULL,
   `Email` varchar(40) NOT NULL,
   `Telepon` char(15) NOT NULL,
   `Bidang` text NOT NULL,
@@ -648,9 +699,10 @@ CREATE TABLE IF NOT EXISTS `perusahaan` (
 -- Dumping data for table `perusahaan`
 --
 
-INSERT INTO `perusahaan` (`idUser`, `Username`, `Password`, `Nama`, `Alamat`, `Email`, `Telepon`, `Bidang`, `logo`) VALUES
-('C-001', 'daria', 'daria', 'daria varia', 'semarang tengah', 'daria@gmail.com', '+628574638558', 'obat, makanan, kesehatan', ''),
-('PR-01', 'pru', 'pru', 'daya jayajh', 'ksndfkjadkf', 'iniini', '08868978', 'eteset', '');
+INSERT INTO `perusahaan` (`idUser`, `Username`, `Password`, `Nama`, `Alamat`, `provinsi`, `Email`, `Telepon`, `Bidang`, `logo`) VALUES
+('C-1', 'daria', 'daria', 'daria varia', 'semarang tengah', 1, 'daria@gmail.com', '+628574638558', 'obat, makanan, kesehatan', 'daria.jpg'),
+('C-2', 'pru', 'pru', 'kalbe', 'perusahaan obat dan makanan', 7, 'iniini@kalbe.com', '08868978', 'obat dan makanan', 'kalbe.jpg'),
+('C-4', 'test', 'test', 'test', 'semarang', 13, 'great_julian@yahoo.com', '088888696', 'komputer, jaringan', 'C-4life-wallpaper-10172202.jpg');
 
 -- --------------------------------------------------------
 
@@ -708,6 +760,12 @@ INSERT INTO `provinsi` (`provinsi_id`, `provinsi_nama`) VALUES
 --
 
 --
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+ ADD UNIQUE KEY `date` (`date`), ADD KEY `iduser` (`iduser`), ADD KEY `status` (`status`);
+
+--
 -- Indexes for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
@@ -723,7 +781,7 @@ ALTER TABLE `komentar`
 -- Indexes for table `lamaran`
 --
 ALTER TABLE `lamaran`
- ADD KEY `IdLowongan` (`IdLowongan`,`IdUser`);
+ ADD UNIQUE KEY `date` (`date`), ADD KEY `IdLowongan` (`IdLowongan`,`IdUser`);
 
 --
 -- Indexes for table `lowongan`
